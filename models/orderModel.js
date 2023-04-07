@@ -42,8 +42,6 @@ const orderSchema = new mongoose.Schema(
   },
 );
 
-//hoc lap trinh
-
 const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;
