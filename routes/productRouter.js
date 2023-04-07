@@ -1,12 +1,14 @@
 const express = require('express');
 const productRouter = express.Router();
-const { getProduct,
-    getProductById,
-    deleteProductByID,
-    createProduct,
-updateProduct,
-reviewProduct,
-getTop } = require('../controller/productController');
+const {
+  getProduct,
+  getProductById,
+  deleteProductByID,
+  createProduct,
+  updateProduct,
+  reviewProduct,
+  getTop,
+} = require('../controller/productController');
 
 const { protect, isAdmin } = require('../middleware/authMiddleware');
 
