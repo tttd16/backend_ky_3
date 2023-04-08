@@ -4,8 +4,8 @@ const schema = mongoose.Schema;
 
 const userSchema = new schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true },
+    name: { type: String, min: 6, max: 24, required: true },
+    email: { type: String, min: 6, max: 50, required: true },
     password: { type: String, required: true },
     isAdmin: {
       type: Boolean,

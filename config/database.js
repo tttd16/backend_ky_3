@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
-    const dbConfig = 'mongodb://127.0.0.1/backend-ky-3';
+    const dbConfig = process.env.MONGO_CONNECT;
     const connect = await mongoose.connect(dbConfig);
     console.log(`Mongodb connected: ${connect.connection.host}`);
   } catch (e) {

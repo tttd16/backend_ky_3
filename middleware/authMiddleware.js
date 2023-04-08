@@ -8,7 +8,7 @@ const protect = asyncHandler(async (req, res, next) => {
   if (authorization && authorization.startsWith('Bearer')) {
     try {
       const token = req.headers.authorization.split(' ')[1];
-      const userVerify = jwt.verify(token, 'masobimat');
+      const userVerify = jwt.verify(token, process.env.JWT_SECRET);
       const userId = userVerify.id;
       const userInfo = await userModel.findById(userId).select('-password');
       req.user = userInfo;

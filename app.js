@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const { errorMiddleware } = require('./middleware/errorMiddleware');
 const connectDB = require('./config/database');
