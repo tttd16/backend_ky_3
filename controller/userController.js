@@ -106,8 +106,8 @@ const updateUser = asyncHandler(async (req, res) => {
 
 /**
  * @desc Get all user
- *  @route GET users/
- *  @access Private Admin
+ * @route GET users/
+ * @access Private Admin
  * @type {*|express.RequestHandler<core.ParamsDictionary, any, any, core.Query>}
  */
 const getAllUser = asyncHandler(async (req, res) => {
@@ -117,8 +117,8 @@ const getAllUser = asyncHandler(async (req, res) => {
 
 /**
  * @desc Delete user
- *  @route DELETE users/:id
- *  @access Private Admin
+ * @route DELETE users/:id
+ * @access Private Admin
  * @type {*|express.RequestHandler<core.ParamsDictionary, any, any, core.Query>}
  */
 const deleteUser = asyncHandler(async (req, res) => {
@@ -133,8 +133,8 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 /**
  * @desc Get user by id
- *  @route GET users/:id
- *  @access Private Admin
+ * @route GET users/:id
+ * @access Private Admin
  * @type {*|express.RequestHandler<core.ParamsDictionary, any, any, core.Query>}
  */
 const getUserById = asyncHandler(async (req, res) => {
