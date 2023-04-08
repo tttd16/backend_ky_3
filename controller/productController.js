@@ -124,6 +124,7 @@ const updateProduct = asyncHandler( async (req, res)=>{
                 productUpdate.rate= req.body.rate,
                 productUpdate.category= req.body.category,
                 productUpdate.description= req.body.description,
+                console.log('aaaaa')
                  await productUpdate.save();
                  const product = await productModel.findById({ _id: req.params.id })
                  res.json(product);
@@ -158,10 +159,11 @@ const reviewProduct =asyncHandler(async(req,res)=>{
                     const newReview = {
                         rating: req.body.rating,
                         comment: req.body.comment,
-                        // user: req.user._id
-                        user: req.body. user
+                        user: req.user.name
+                        // user: req.body.user
                     }
-                
+                console.log(req.user.name)
+                    
                     productFind.review =  [...productFind.review, newReview];
                     
                     productFind.numReviews = productFind.review.length;
@@ -175,8 +177,9 @@ const reviewProduct =asyncHandler(async(req,res)=>{
     
                     productFind.rate =  Math.round((totalRating / (productFind.numReviews))*10)/10;
                     
-
+                    
                     await productFind.save();
+                    
                     const productReview = await productModel.findById({ _id: req.params.id })
                      res.json(productReview);
             
