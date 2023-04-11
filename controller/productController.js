@@ -7,6 +7,7 @@ const getProduct = asyncHandler(async (req, res) => {
     const page = Number(req.query.pageNumber) || 1;
     const keyword = req.query.keyword;
     const searchQuery = keyword ? { name: { $regex: keyword } } : {};
+
     const totalProduct = await productModel.countDocuments(searchQuery);
     console.log(totalProduct);
     const products = await productModel
@@ -22,6 +23,30 @@ const getProduct = asyncHandler(async (req, res) => {
     res.status(401);
     throw new Error('Khong lay duoc danh sach san pham!');
   }
+});
+
+const getCategoryProducts = asyncHandler(async (req, res) => {
+  const pageSize = 10;
+  const page = Number(req.query.pageNumber) || 1;
+  const keyword = req.query.keyword;
+  const searchQuery = keyword ? { category: [keyword] } : {};
+
+  const totalProduct = await productModel.countDocuments(searchQuery);
+  const products = await productModel
+    .find(searchQuery)
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  if (!products) {
+    res.status(400);
+    throw new Error('Không tìm thấy tất cả sách');
+  }
+
+  res.status(200).json({
+    products,
+    totalProduct,
+    page,
+  });
 });
 
 const getProductById = asyncHandler(async (req, res) => {
@@ -189,4 +214,5 @@ module.exports = {
   updateProduct,
   reviewProduct,
   getTop,
+  getCategoryProducts,
 };

@@ -8,12 +8,16 @@ const {
   updateProduct,
   reviewProduct,
   getTop,
+  getCategoryProducts,
 } = require('../controller/productController');
 
 const { protect, isAdmin } = require('../middleware/authMiddleware');
 
 // 1. @desc: Get all products
 productRouter.get('/', getProduct);
+
+// @desc: Get category products
+productRouter.get('/category', getCategoryProducts);
 
 // 2. @desc: Get product by ID
 productRouter.get('/:id', getProductById);
