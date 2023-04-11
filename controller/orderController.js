@@ -45,7 +45,8 @@ const getOrderById = asyncHandler(async (req, res) => {
  *  @access Private
  */
 const addOrder = asyncHandler(async (req, res) => {
-  const { orderItems, shippingAddress, paymentResult, paymentMethod, shippingPrice, totalPrice, isPaid } = req.body;
+  const { userID, orderItems, shippingAddress, paymentResult, paymentMethod, shippingPrice, totalPrice, isPaid } =
+    req.body;
 
   if (orderItems && orderItems.length === 0) {
     res.status(400);
@@ -53,7 +54,7 @@ const addOrder = asyncHandler(async (req, res) => {
   } else {
     const order = new orderModel({
       orderItems, // Sử dụng orderItems đã được cập nhật với product là ObjectId
-      user: req.user._id,
+      user: userID,
       shippingAddress,
       paymentResult,
       paymentMethod,
